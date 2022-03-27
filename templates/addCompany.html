@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+
+    body{background-color: rgb(230, 182, 215);}
+    
+    </style>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            <h2>Add Company Here!</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+            <form method="POST">
+                {% csrf_token %}
+                
+                <div class="form-group">
+                    <label for="name">Company Name:</label>
+                    <input type="text" name="name" class="form-control" id="name"  required>
+                </div>
+                <div class="form-group ">
+                    <label for="website">Company Website:</label>
+                    <input type="text" name="website" class="form-control" id="website"  placeholder="eg. https://example.com" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="phone">Company Phone:</label>
+                    <input type="number" name="phone" class="form-control" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <textarea name="address" class="form-control" id="address"  ></textarea>
+                </div>
+                <div class="row">
+                <div class="form-group col-md-4">
+                    <label for="city">City:</label>
+                    <input type="text" name="city" class="form-control" id="city"   required>
+                </div>  
+
+                <div class="form-group  col-md-4">
+                    <label for="state">State:</label>
+                    <input type="text" name="state" class="form-control" id="state"  required>
+                </div>
+                <div class="form-group  col-md-4">
+                    <label for="country">Country:</label>
+                    <input type="text" name="country" class="form-control" id="country"   required>
+                </div>
+            </div>
+                <div class="form-group">
+                    <label for="industry_list">Industry List:</label>
+                    
+                    <select name="industry_list" required id="id_industry_list">
+                        <option value="" selected>---------</option>
+                      
+                        <option value="account" >Account</option>
+                      
+                        <option value="it">IT</option>
+                      
+                        <option value="sales">Sales</option>
+                      
+                        <option value="healthcare">Health Care</option>
+                      
+                      </select>
+                </div>
+
+                
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
